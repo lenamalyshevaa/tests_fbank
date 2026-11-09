@@ -6,6 +6,28 @@
 
 Тестируется учебный сервис F-Bank для перевода денег со счёта на карту.
 
+## Где что смотреть
+
+| Что | Ссылка |
+|-----|--------|
+| **Баг-репорты** | [docs/bug-reports.md](https://github.com/lenamalyshevaa/tests_fbank/blob/main/docs/bug-reports.md) |
+| **Тест-кейсы ручного тестирования** | [docs/test-cases.md](https://github.com/lenamalyshevaa/tests_fbank/blob/main/docs/test-cases.md) |
+| **Автотесты (Selenium + pytest)** | [tests/](https://github.com/lenamalyshevaa/tests_fbank/tree/main/tests) |
+| **Настройка CI** | [.github/workflows/tests.yml](https://github.com/lenamalyshevaa/tests_fbank/blob/main/.github/workflows/tests.yml) |
+| **Сборки в GitHub Actions** | [вкладка Actions](https://github.com/lenamalyshevaa/tests_fbank/actions/workflows/tests.yml) |
+
+### Найденные дефекты
+
+| ID | Дефект | Серьёзность | Тест-кейс | Автотест |
+|----|--------|-------------|-----------|----------|
+| [BUG-1](https://github.com/lenamalyshevaa/tests_fbank/blob/main/docs/bug-reports.md#bug-1) | В поле «Номер карты» можно ввести 17 цифр | Major | TC-4 | `test_card_number_max_16_digits` |
+| [BUG-2](https://github.com/lenamalyshevaa/tests_fbank/blob/main/docs/bug-reports.md#bug-2) | Можно перевести отрицательную сумму | Critical | TC-5 | `test_negative_amount_not_allowed` |
+| [BUG-3](https://github.com/lenamalyshevaa/tests_fbank/blob/main/docs/bug-reports.md#bug-3) | Нельзя перевести сумму, которая с комиссией ровно равна остатку | Major | TC-12 | `test_available_balance_boundary[exactly_limit]` |
+| [BUG-4](https://github.com/lenamalyshevaa/tests_fbank/blob/main/docs/bug-reports.md#bug-4) | На валютных счетах не проверяется их собственный остаток | Critical | TC-13 | `test_foreign_account_uses_own_balance` |
+| [BUG-5](https://github.com/lenamalyshevaa/tests_fbank/blob/main/docs/bug-reports.md#bug-5) | Можно перевести 0 ₽ | Minor | TC-14 | `test_zero_amount_not_allowed` |
+
+Сборка в CI красная, потому что автотесты на эти дефекты падают (6 failed, 14 passed).
+
 ## Что есть в репозитории
 
 - `app/` — сам сервис (собранный фронтенд из архива)
