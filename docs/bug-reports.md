@@ -1,6 +1,10 @@
 # Баг-репорты
 
+Баг-репорты также заведены в [Issues](https://github.com/lenamalyshevaa/tests_fbank/issues).
+
 ## BUG-1
+
+**Issue:** [#1](https://github.com/lenamalyshevaa/tests_fbank/issues/1)
 
 **Заголовок:** В поле «Номер карты» можно ввести 17 цифр
 
@@ -20,9 +24,9 @@
 **Тест-кейс:** TC-4
 **Автотест:** `test_card_number_max_16_digits`
 
----
-
 ## BUG-2
+
+**Issue:** [#2](https://github.com/lenamalyshevaa/tests_fbank/issues/2)
 
 **Заголовок:** Можно перевести отрицательную сумму
 
@@ -44,9 +48,9 @@
 **Тест-кейс:** TC-5
 **Автотест:** `test_negative_amount_not_allowed`
 
----
-
 ## BUG-3
+
+**Issue:** [#3](https://github.com/lenamalyshevaa/tests_fbank/issues/3)
 
 **Заголовок:** Нельзя перевести сумму, которая вместе с комиссией ровно равна доступному остатку
 
@@ -67,9 +71,9 @@
 **Тест-кейс:** TC-12
 **Автотест:** `test_available_balance_boundary[exactly_limit]`
 
----
-
 ## BUG-4
+
+**Issue:** [#4](https://github.com/lenamalyshevaa/tests_fbank/issues/4)
 
 **Заголовок:** На валютных счетах не проверяется их собственный остаток
 
@@ -90,9 +94,9 @@
 **Тест-кейс:** TC-13
 **Автотест:** `test_foreign_account_uses_own_balance`
 
----
-
 ## BUG-5
+
+**Issue:** [#5](https://github.com/lenamalyshevaa/tests_fbank/issues/5)
 
 **Заголовок:** Можно перевести 0 ₽
 
