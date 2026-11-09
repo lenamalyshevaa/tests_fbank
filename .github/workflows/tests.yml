@@ -1,0 +1,40 @@
+name: Selenium tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Start F-Bank
+        run: |
+          python -m http.server 9999 --directory app > server.log 2>&1 &
+          for i in $(seq 1 20); do
+            curl -sf http://localhost:9999/ > /dev/null && exit 0
+            sleep 1
+          done
+          echo "F-Bank did not start"; cat server.log; exit 1
+
+      - name: Run tests
+        run: pytest --junitxml=report.xml
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: report.xml
